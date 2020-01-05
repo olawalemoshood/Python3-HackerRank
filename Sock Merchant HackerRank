@@ -1,0 +1,46 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the sockMerchant function below.
+#Mosh wrote this
+
+def sockMerchant(n, ar):
+    if n >=1 and n<=100:
+   # the above is to check if n falls within specify range
+        
+        arNew = list(set(ar))
+        arNew.sort()
+   # above is to find the unique elements of "ar" and then sort
+      
+      if len(ar)== n and (arNew[0] >= 1 and arNew[len(arNew)-1] <= 100):
+  
+  # the above is to check if the values provided falls with the range specified
+          
+          pair = sum([ar.count(i)//2 for i in arNew])
+  
+  # the pair is a list comprehension checking the counts of the element of "arNew" in "ar"
+          
+        else:
+            print("Out of Range")
+    else:
+        print("Out of Range")
+    return pair
+            
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input())
+    
+    ar = list(map(int, input().rstrip().split()))
+                    
+result = sockMerchant(n, ar)
+
+fptr.write(str(result) + '\n')
+
+fptr.close()
